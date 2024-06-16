@@ -1,0 +1,240 @@
+---->2024-05-03 19:33:45<-----
+Comment: Best stats for 100m with only SAR
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (493, 40)
+Cleaning parameters: T = mean, std = 200
+Cleaned dataset: (493, 40)
+Model dataset shape: (493, 5)
+Split into -> test: (124, 5) and size: (369, 5). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd'], dtype='object')
+Y model name: snow_depth_bins
+Random state: 42, split: 99
+
+Mean Absolute Error: 36.11
+Mean Squared Error: 2216.16
+Root Mean Squared Error: 47.08
+Relative RMSE: 0.19
+MAPE: 0.43
+OOB score: No OOB
+max_error: 177.48
+R2: 0.11
+
+Best params: {'n_estimators': 100, 'min_samples_split': 2, 'min_samples_leaf': 6, 'max_features': 1, 'max_depth': 50, 'bootstrap': True}
+All params: {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 50, 'max_features': 1, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 6, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 20.93% - VV: 23.97% - VH/VV: 20.66% - angle: 18.12% - time_difference_rnd: 16.32%
+
+
+---->2024-05-03 22:33:53<-----
+Comment: Best stats for 500m with only SAR
+CSV file1: values_to_points_R_500.csv
+CSV file2: values_to_points_R_era5_500.csv
+Main dataset (rows,columns): (501, 40)
+Cleaning parameters: T = mean, std = 200
+Cleaned dataset: (501, 40)
+Model dataset shape: (501, 5)
+Split into -> test: (126, 5) and size: (375, 5). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd'], dtype='object')
+Y model name: snow_depth_bins
+Random state: 387, split: 780
+
+Mean Absolute Error: 36.52
+Mean Squared Error: 2196.16
+Root Mean Squared Error: 46.86
+Relative RMSE: 0.19
+MAPE: 0.43
+OOB score: No OOB
+max_error: 171.80
+R2: 0.11
+
+Best params: {'n_estimators': 500, 'min_samples_split': 4, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 60, 'bootstrap': True}
+All params: {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 60, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 2, 'min_samples_split': 4, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 500, 'n_jobs': None, 'oob_score': False, 'random_state': 387, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 21.15% - VV: 22.78% - VH/VV: 19.37% - angle: 20.84% - time_difference_rnd: 15.86%
+
+
+---->2024-05-05 14:42:52<-----
+Comment: Best stats for 1000m with only SAR
+CSV file1: values_to_points_R_1000.csv
+CSV file2: values_to_points_R_era5_1000.csv
+Main dataset (rows,columns): (504, 40)
+Cleaning parameters: T = skip, std = 500
+Cleaned dataset: (504, 40)
+Model dataset shape: (504, 5)
+Split into -> test: (126, 5) and size: (378, 5). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd'], dtype='object')
+Y model name: snow_depth_bins
+Random state: 445, split: 6
+
+Mean Absolute Error: 35.75
+Mean Squared Error: 2196.73
+Root Mean Squared Error: 46.87
+Relative RMSE: 0.19
+MAPE: 0.44
+OOB score: No OOB
+max_error: 165.95
+R2: 0.12
+
+Best params: {'n_estimators': 600, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 1, 'max_depth': 60, 'bootstrap': True}
+All params: {'bootstrap': True, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': 60, 'max_features': 1, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 5, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 600, 'n_jobs': None, 'oob_score': False, 'random_state': 445, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 21.66% - VV: 21.09% - VH/VV: 20.66% - angle: 20.08% - time_difference_rnd: 16.53%
+
+
+
+
+---->2024-05-06 11:40:04<-----
+Comment: Best stats for 100m with SAR + Terrain
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (493, 40)
+Cleaning parameters: T = skip, std = 300
+Cleaned dataset: (493, 40)
+Model dataset shape: (493, 11)
+Split into -> test: (124, 11) and size: (369, 11). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd',
+       'orbitProp_ASCENDING', 'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100',
+       'TRI_100'],
+      dtype='object')
+Y model name: snow_depth_bins
+Random state: 241, split: 258
+
+Mean Absolute Error: 26.57
+Mean Squared Error: 1348.55
+Root Mean Squared Error: 36.72
+Relative RMSE: 0.15
+MAPE: 0.33
+OOB score: No OOB
+max_error: 148.59
+R2: 0.46
+
+Best params: {'n_estimators': 800, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+All params: {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 800, 'n_jobs': None, 'oob_score': False, 'random_state': 241, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 12.58% - VV: 11.54% - VH/VV: 11.74% - angle: 10.76% - time_difference_rnd: 9.42% - orbitProp_ASCENDING: 1.66% - ELEV_100: 9.12% - ASP_100: 10.31% - SLOP_100: 6.76% - TPI_100: 7.71% - TRI_100: 8.39%
+
+
+---->2024-05-06 12:48:04<-----
+Comment: Best stats for 500m with SAR + Terrain
+CSV file1: values_to_points_R_500.csv
+CSV file2: values_to_points_R_era5_500.csv
+Main dataset (rows,columns): (501, 40)
+Cleaning parameters: T = skip, std = 300
+Cleaned dataset: (501, 40)
+Model dataset shape: (501, 11)
+Split into -> test: (126, 11) and size: (375, 11). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd',
+       'orbitProp_ASCENDING', 'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100',
+       'TRI_100'],
+      dtype='object')
+Y model name: snow_depth_bins
+Random state: 436, split: 258
+
+Mean Absolute Error: 27.19
+Mean Squared Error: 1246.25
+Root Mean Squared Error: 35.30
+Relative RMSE: 0.14
+MAPE: 0.34
+OOB score: No OOB
+max_error: 154.38
+R2: 0.50
+
+Best params: {'n_estimators': 400, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+All params: {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 3, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 400, 'n_jobs': None, 'oob_score': False, 'random_state': 436, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 12.04% - VV: 12.41% - VH/VV: 10.41% - angle: 8.95% - time_difference_rnd: 10.02% - orbitProp_ASCENDING: 1.30% - ELEV_100: 10.25% - ASP_100: 10.31% - SLOP_100: 7.51% - TPI_100: 8.12% - TRI_100: 8.69%
+
+
+---->2024-05-06 14:05:54<-----
+Comment: Best stats for 500m with SAR + Terrain
+CSV file1: values_to_points_R_1000.csv
+CSV file2: values_to_points_R_era5_1000.csv
+Main dataset (rows,columns): (504, 40)
+Cleaning parameters: T = skip, std = 300
+Cleaned dataset: (504, 40)
+Model dataset shape: (504, 11)
+Split into -> test: (126, 11) and size: (378, 11). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd',
+       'orbitProp_ASCENDING', 'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100',
+       'TRI_100'],
+      dtype='object')
+Y model name: snow_depth_bins
+Random state: 278, split: 420
+
+Mean Absolute Error: 28.33
+Mean Squared Error: 1567.12
+Root Mean Squared Error: 39.59
+Relative RMSE: 0.16
+MAPE: 0.33
+OOB score: No OOB
+max_error: 167.69
+R2: 0.37
+
+Best params: {'n_estimators': 800, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': None, 'bootstrap': False}
+All params: {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 800, 'n_jobs': None, 'oob_score': False, 'random_state': 278, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 11.02% - VV: 11.92% - VH/VV: 9.69% - angle: 11.34% - time_difference_rnd: 9.47% - orbitProp_ASCENDING: 1.43% - ELEV_100: 11.84% - ASP_100: 9.56% - SLOP_100: 7.80% - TPI_100: 7.81% - TRI_100: 8.11%
+
+
+
+---->2024-05-06 23:22:13<-----
+Comment: 
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (493, 40)
+Cleaning parameters: T = skip, std = 300
+Cleaned dataset: (493, 40)
+Model dataset shape: (493, 13)
+Split into -> test: (124, 13) and size: (369, 13). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd',
+       'orbitProp_ASCENDING', 'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100',
+       'TRI_100', 't2m', 'rsn'],
+      dtype='object')
+Y model name: snow_depth_bins
+Random state: 42, split: 42
+
+Mean Absolute Error: 27.39
+Mean Squared Error: 1410.69
+Root Mean Squared Error: 37.56
+Relative RMSE: 0.15
+MAPE: 0.34
+OOB score: No OOB
+max_error: 138.33
+R2: 0.44
+
+Best params: {'n_estimators': 100, 'min_samples_split': 2, 'max_features': 4, 'max_depth': None, 'bootstrap': False}
+All params: {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 4, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 30, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 8.74% - VV: 9.36% - VH/VV: 7.27% - angle: 4.89% - time_difference_rnd: 5.72% - orbitProp_ASCENDING: 1.35% - ELEV_100: 10.81% - ASP_100: 9.08% - SLOP_100: 5.60% - TPI_100: 8.32% - TRI_100: 7.48% - t2m: 10.36% - rsn: 11.03%
+
+
+---->2024-05-07 13:07:28<-----
+Comment: 100 með T+E5, verið að prófa nýtt setting
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (493, 40)
+Cleaning parameters: T = skip, std = 300
+Cleaned dataset: (493, 40)
+Model dataset shape: (493, 13)
+Split into -> test: (124, 13) and size: (369, 13). Ratio: 0.25
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd',
+       'orbitProp_ASCENDING', 'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100',
+       'TRI_100', 't2m', 'rsn'],
+      dtype='object')
+Y model name: snow_depth_bins
+Random state: 42, split: 42
+
+Mean Absolute Error: 27.41
+Mean Squared Error: 1400.12
+Root Mean Squared Error: 37.42
+Relative RMSE: 0.15
+MAPE: 0.34
+OOB score: No OOB
+max_error: 138.50
+R2: 0.44
+
+Best params: {'n_estimators': 100, 'min_samples_split': 3, 'max_features': 4, 'max_depth': None, 'bootstrap': False}
+All params: {'bootstrap': False, 'ccp_alpha': 0.0, 'criterion': 'squared_error', 'max_depth': None, 'max_features': 4, 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 3, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 100, 'n_jobs': None, 'oob_score': False, 'random_state': 42, 'verbose': 0, 'warm_start': False}
+Feature importance:
+ - VH: 8.13% - VV: 8.29% - VH/VV: 7.81% - angle: 5.62% - time_difference_rnd: 5.23% - orbitProp_ASCENDING: 1.24% - ELEV_100: 11.40% - ASP_100: 8.43% - SLOP_100: 6.17% - TPI_100: 7.55% - TRI_100: 8.62% - t2m: 10.24% - rsn: 11.27%

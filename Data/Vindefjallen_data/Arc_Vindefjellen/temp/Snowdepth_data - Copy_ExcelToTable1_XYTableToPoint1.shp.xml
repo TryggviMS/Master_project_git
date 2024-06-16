@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20231115</CreaDate><CreaTime>11021700</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Spatial Analyst Tools.tbx\ExtractMultiValuesToPoints" Date="20231115" Time="110217">ExtractMultiValuesToPoints "Snowdepth_data - Copy_ExcelToTable1_XYTableToPoint1" "swe_vindefjallen_dem_mosaic.tif elev" NONE</Process></lineage></DataProperties></Esri></metadata>

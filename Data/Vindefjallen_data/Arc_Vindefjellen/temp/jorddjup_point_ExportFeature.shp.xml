@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20240216</CreaDate><CreaTime>14351200</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\users\tryggvisi\appdata\local\programs\arcgis\pro\Resources\ArcToolbox\toolboxes\Spatial Analyst Tools.tbx\ExtractMultiValuesToPoints" Date="20240216" Time="143512">ExtractMultiValuesToPoints "Annað data\jorddjup_point_ExportFeature" "'Annað data\jorddjup_10x10m.tif' jorddjup_2" BILINEAR</Process></lineage></DataProperties></Esri></metadata>

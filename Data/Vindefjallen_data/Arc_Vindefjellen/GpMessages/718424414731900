@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?><messages><msg code="0" type="2">Start Time: sunnudagur, 21. janúar 2024 17:53:24</msg><msg code="539" type="100">ERROR 000539: Traceback (most recent call last):
+  File "&lt;expression&gt;", line 1, in &lt;module&gt;
+IndexError: string index out of range
+</msg><msg code="-2147467259" type="100">Failed to execute (CalculateField).</msg><msg code="0" type="3">Failed at sunnudagur, 21. janúar 2024 17:53:24 (Elapsed Time: 0,27 seconds)</msg></messages>

@@ -1,0 +1,90 @@
+---
+title: "R Notebook. Verið að kíkja á CSV skrá frá NOAA með stöðvar frá Sverige"
+output: html_notebook
+---
+```{r}
+# Define the file path
+file_path <- "C:\\Users\\trygg\\Documents\\Master_project\\Testing\\NOAA_Stations\\Data\\3470671.csv"
+
+# Read the CSV file and store it in a dataframe
+df <- read.csv(file_path)
+
+columns_to_keep <- c("STATION", "NAME", "LATITUDE", "LONGITUDE", "SNWD")
+
+# Subset the dataframe to keep only the selected columns
+df_trim1 <- df[, columns_to_keep]
+
+```
+
+
+
+```{r}
+#remove all zero snow depth values and empty values
+df_nosnow <- df_trim1[df_trim1$SNWD != 0 & !is.na(df_trim1$SNWD), ]
+```
+
+
+```{r}
+column_to_unique <- "STATION"
+
+# Keep only the unique row based on the specified column
+unique_row <- df_nosnow[!duplicated(df_nosnow[, column_to_unique]), ]
+
+# Check the resulting unique row
+unique_row
+```
+
+
+```{r}
+# Load the sf package if not already loaded
+library(sf)
+
+# Create a simple features object from unique_row
+sf_unique <- st_as_sf(unique_row, 
+                      coords = c("LONGITUDE", "LATITUDE"), 
+                      crs = 4326) # Assuming WGS84 coordinates
+sf_unique$STATIONS <- unique_row$STATIONS
+sf_unique$NAME <- unique_row$NAME
+sf_unique$SNWD <- unique_row$SNWD
+
+# Specify the path to save the shapefile
+shapefile_path <- "C:\\Users\\trygg\\Documents\\Master_project\\Data\\Weather-stations\\NOAA\\sweden_station_list.shp"
+# Save the simple features object as a shapefile
+st_write(sf_unique, dsn = shapefile_path)
+```
+```{r}
+# Create a simple features object from unique_row
+sf_unique <- st_as_sf(df_nosnow, 
+                      coords = c("LONGITUDE", "LATITUDE"), 
+                      crs = 4326) # Assuming WGS84 coordinates
+sf_unique$STATIONS <- df_nosnow$STATIONS
+sf_unique$NAME <- df_nosnow$NAME
+sf_unique$SNWD <- df_nosnow$SNWD
+
+# Specify the path to save the shapefile
+shapefile_path <- "C:\\Users\\trygg\\Documents\\Master_project\\Testing\\NOAA_Stations\\Data\\sweden_station_list_ALLSNOW.shp"
+
+# Save the simple features object as a shapefile
+st_write(sf_unique, dsn = shapefile_path)
+```
+```{r}
+# Load required packages
+library(sf)
+library(dplyr)
+
+# Assuming your df_nosnow DataFrame is already loaded
+
+# Group by 'STATION' and concatenate 'SNWD' values
+unique_locations <- df_nosnow %>%
+  group_by(STATION, LATITUDE, LONGITUDE, NAME) %>%
+  summarize(SNWD = paste(SNWD, collapse = ', ')) %>%
+  ungroup()
+
+# Create an sf data frame from the unique_locations data frame
+unique_locations_sf <- st_as_sf(unique_locations, coords = c("LONGITUDE", "LATITUDE"))
+
+# Save the resulting shapefile
+st_write(unique_locations_sf, 'temp\\output_shapefile.shp')
+
+```
+

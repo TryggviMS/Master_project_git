@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20240205</CreaDate><CreaTime>18000800</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\users\tryggvisi\appdata\local\programs\arcgis\pro\Resources\ArcToolbox\toolboxes\Spatial Analyst Tools.tbx\ExtractMultiValuesToPoints" Date="20240205" Time="180008">ExtractMultiValuesToPoints Features\slc_granule_ev_FeatureToPoin "'Base Layer\nh_merged.tif' nh_merged" NONE</Process></lineage></DataProperties></Esri></metadata>

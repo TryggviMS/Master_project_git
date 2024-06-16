@@ -1,0 +1,97 @@
+---
+title: "R Notebook til að prófa correletion fyrir snjó dýpi og backscatter VH/VV ratio"
+output: html_notebook
+---
+```{r}
+setwd("C:/Users/trygg/Documents/Master_project/Scripts/R")
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+```
+
+
+
+```{r}
+# Define the file path
+file_path <- "data/RasterToPoint_TableToExcel.csv"
+
+file_path <- "data/2020-03-11_RaterToPoint.csv"
+
+file_path <- "data/marsVH_augustVV.csv"
+
+file_path <- "data/RasterT_ERA5_SD1_Buffer_TableToExcel.csv"
+
+file_path <- "data/marsVH_augustVV_coregistered.csv"
+
+file_path <- "data/marsVH_augustVV_coregistered_point_buffer_zonal.csv"
+
+df_trim1 <- read.csv(file_path)
+
+df_trim1 <- df_trim1[df_trim1$ERA5 > 1, ]
+
+df_trim1 <- df_trim1[df_trim1$backs > 0 & df_trim1$backs <= 5, ]
+
+# Assuming df_trim1 is your data frame
+df_sorted <- df_trim1[order(df_trim1$ERA5), ]
+
+#MEAN MEDIAN PCT90
+backs <- 'PCT90
+```
+
+```{r}
+p <- ggplot(df_trim1, aes_string(x = backs, y = "ERA5")) +
+  geom_line()
+
+# Limit the axes
+p + coord_cartesian(xlim = c(1.5,5), ylim = c(0, 3))
+```
+
+```{r}
+shapiro.test(df_trim1$ERA5)
+hist(df_trim1$ERA5, main = "Histogram for ERA5")
+# Q-Q plot for ERA5
+qqnorm(df_trim1$ERA5)
+qqline(df_trim1$ERA5, col = 2)
+```
+
+```{r}
+# Shapiro-Wilk test for backs
+shapiro.test(df_trim1[[backs]])
+hist(df_trim1[[backs]], main = "Histogram for backs")
+# Q-Q plot for backs
+# Create a QQ plot using qqnorm()
+qqnorm(df_trim1[[backs]])
+qqline(df_trim1[[backs]])
+ggqqplot(df_trim1[[backs]])
+
+```
+
+
+```{r}
+
+# Store the result in a variable
+#cor_result <- cor.test( df_trim1$backs,df_trim1$ERA5, method = "spearman")
+cor_result <- cor.test(df_trim1[[backs]],df_trim1$ERA5, method = "spearman", exact = FALSE)
+
+
+# Access the correlation coefficient and p-value
+cor_coef <- cor_result$estimate
+p_value <- cor_result$p.value
+
+cat("Spearman's rank correlation coefficient:", cor_coef, "\n")
+cat("P-value:", p_value, "\n")
+
+
+```
+
+```{r}
+# Assuming df_trim1 is your data frame
+correlation_result <- cor.test(df_trim1[[backs]], df_trim1$ERA5, method = "pearson")
+
+# Print the results
+print(correlation_result)
+correlation_result$estimate
+
+```
+

@@ -1,0 +1,148 @@
+---->2024-03-21 18:52:31<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_1000_linear.csv
+Original dataset: (492, 46)
+Cleaned dataset: (297, 31)
+Descending: (171, 31)
+Ascending: (126, 31)
+Model dataset shape: (171, 31)
+X Columns: ['X' 'TriangleCorner' 'date' 'snow_depth' 'temperature' 'time_difference'
+ 'orbitProp' 'VH' 'VV' 'angle' 'ID' 'TPI_100' 'TPI_500' 'TPI_1000'
+ 'TRI_100' 'TRI_500' 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500'
+ 'ASP_1000' 'SLO_1000' 'ELEV_100' 'ELEV_500' 'ELEV_1000'
+ 'time_difference_rnd' 'snow_depth_bins' 'VH/VV' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING']
+Y model name: snow_depth_bins
+Mean Absolute Error: 20.8
+Mean Squared Error: 672.8
+Root Mean Squared Error: 25.9
+Best params: {'n_estimators': 600, 'min_samples_split': 5, 'min_samples_leaf': 1, 'max_features': 1, 'max_depth': 20}
+Feature importance:
+	VH: 9.1%	VV: 10.1%	VH/VV: 8.6%	angle: 10.4%	time_difference_rnd: 7.8%	temperature: 10.5%	TPI_1000: 9.3%	TRI_1000: 8.0%	ELEV_1000: 9.3%	ASP_1000: 8.7%	SLO_1000: 8.1%
+
+
+
+---->2024-03-22 15:42:26<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_500.csv
+Original dataset: (492, 30)
+Cleaning parameters: 2, 2
+Cleaned dataset: (273, 35)
+Descending: (164, 35)
+Ascending: (109, 35)
+Model dataset shape: (273, 35)
+X Columns: ['ID_clean' 'TriangleCorner' 'date' 'snow_depth' 'snow_depth_bins'
+ 'temperature' 'middleTime' 'time_difference' 'time_difference_rnd' 'VH'
+ 'VV' 'VH/VV' 'angle' 'TPI_100' 'TPI_500' 'TPI_1000' 'TRI_100' 'TRI_500'
+ 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500' 'ASP_1000' 'SLO_1000'
+ 'ELEV_100' 'ELEV_500' 'ELEV_1000' 'orbitProp' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING' 'ERA5_time' 'skt' 'rsn' 'sd']
+Y model name: snow_depth_bins
+Mean Absolute Error: 25.8
+Mean Squared Error: 1072.6
+Root Mean Squared Error: 32.8
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': 1, 'max_depth': 80}
+Feature importance:
+	VH: 10.5%	VV: 10.2%	VH/VV: 6.9%	angle: 7.1%	TPI_100: 6.5%	TRI_100: 6.5%	ELEV_100: 7.1%	ASP_100: 7.7%	SLOP_100: 6.6%	skt: 10.5%	rsn: 10.1%	sd: 10.4%
+
+
+---->2024-03-22 15:56:45<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_500.csv
+Original dataset: (492, 30)
+Cleaning parameters: 2, 2
+Cleaned dataset: (273, 35)
+Descending: (164, 35)
+Ascending: (109, 35)
+Model dataset shape: (273, 35)
+X Columns: ['ID_clean' 'TriangleCorner' 'date' 'snow_depth' 'snow_depth_bins'
+ 'temperature' 'middleTime' 'time_difference' 'time_difference_rnd' 'VH'
+ 'VV' 'VH/VV' 'angle' 'TPI_100' 'TPI_500' 'TPI_1000' 'TRI_100' 'TRI_500'
+ 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500' 'ASP_1000' 'SLO_1000'
+ 'ELEV_100' 'ELEV_500' 'ELEV_1000' 'orbitProp' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING' 'ERA5_time' 'skt' 'rsn' 'sd']
+Y model name: snow_depth_bins
+Mean Absolute Error: 21.3
+Mean Squared Error: 775.8
+Root Mean Squared Error: 27.9
+Best params: {'n_estimators': 800, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 1, 'max_depth': 40}
+Feature importance:
+	VH: 14.2%	VV: 13.5%	VH/VV: 11.3%	angle: 12.0%	time_difference_rnd: 8.6%	skt: 12.1%	rsn: 15.0%	sd: 13.2%
+
+
+---->2024-03-22 15:59:14<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_500.csv
+Original dataset: (492, 30)
+Cleaning parameters: 2, 2
+Cleaned dataset: (273, 35)
+Descending: (164, 35)
+Ascending: (109, 35)
+Model dataset shape: (273, 35)
+X Columns: ['ID_clean' 'TriangleCorner' 'date' 'snow_depth' 'snow_depth_bins'
+ 'temperature' 'middleTime' 'time_difference' 'time_difference_rnd' 'VH'
+ 'VV' 'VH/VV' 'angle' 'TPI_100' 'TPI_500' 'TPI_1000' 'TRI_100' 'TRI_500'
+ 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500' 'ASP_1000' 'SLO_1000'
+ 'ELEV_100' 'ELEV_500' 'ELEV_1000' 'orbitProp' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING' 'ERA5_time' 'skt' 'rsn' 'sd']
+Y model name: snow_depth_bins
+Mean Absolute Error: 21.0
+Mean Squared Error: 760.8
+Root Mean Squared Error: 27.6
+Best params: {'n_estimators': 1800, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 1, 'max_depth': 50}
+Feature importance:
+	VH: 15.3%	VV: 15.4%	VH/VV: 12.6%	angle: 13.0%	skt: 12.8%	rsn: 16.2%	sd: 14.7%
+
+
+
+
+
+---->2024-03-22 22:24:48<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_1000_linear.csv
+Original dataset: (492, 30)
+Cleaning parameters: 3, 2
+Cleaned dataset: (277, 35)
+Descending: (161, 35)
+Ascending: (108, 35)
+Model dataset shape: (161, 35)
+X Columns: ['ID_clean' 'TriangleCorner' 'date' 'snow_depth' 'snow_depth_bins'
+ 'temperature' 'middleTime' 'time_difference' 'time_difference_rnd' 'VH'
+ 'VV' 'VH/VV' 'angle' 'TPI_100' 'TPI_500' 'TPI_1000' 'TRI_100' 'TRI_500'
+ 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500' 'ASP_1000' 'SLO_1000'
+ 'ELEV_100' 'ELEV_500' 'ELEV_1000' 'orbitProp' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING' 'ERA5_time' 'skt' 'rsn' 'sd']
+Y model name: snow_depth_bins
+Mean Absolute Error: 23.2
+Mean Squared Error: 908.3
+Root Mean Squared Error: 30.1
+Best params: {'n_estimators': 1600, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 100}
+Feature importance:
+	VH: 8.4%	VV: 8.7%	VH/VV: 9.4%	angle: 6.3%	time_difference_rnd: 4.6%	TPI_100: 6.1%	TRI_100: 7.3%	ELEV_100: 5.3%	ASP_100: 5.9%	SLOP_100: 4.8%	skt: 10.6%	rsn: 12.4%	sd: 10.3%
+
+
+---->2024-03-26 15:52:45<-----
+
+CSV file: Data\Vindefjallen_data\Vindefjallen_cleaning\exploratory_data_analysis\2_values_from_raster_python_R\values_to_points_R_1000_linear.csv
+Original dataset: (492, 30)
+Cleaning parameters: 2, 2
+Cleaned dataset: (277, 38)
+Descending: (165, 38)
+Ascending: (112, 38)
+Model dataset shape: (277, 38)
+X Columns: ['ID_clean' 'TriangleCorner' 'date' 'snow_depth' 'snow_depth_bins'
+ 'temperature' 'middleTime' 'time_difference' 'time_difference_rnd' 'VH'
+ 'VV' 'VH/VV' 'angle' 'TPI_100' 'TPI_500' 'TPI_1000' 'TRI_100' 'TRI_500'
+ 'TRI_1000' 'ASP_100' 'SLOP_100' 'ASP_500' 'SLO_500' 'ASP_1000' 'SLO_1000'
+ 'ELEV_100' 'ELEV_500' 'ELEV_1000' 'orbitProp' 'orbitProp_ASCENDING'
+ 'orbitProp_DESCENDING' 'ERA5_time' 't2m' 'skt' 'rsn' 'sd' 'tsn' 'tcsw']
+Y model name: snow_depth_bins
+Mean Absolute Error: 31.1
+Mean Squared Error: 1557.0
+Root Mean Squared Error: 39.5
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 10}
+Feature importance:
+	VH: 32.7%	VV: 34.9%	VH/VV: 29.0%	orbitProp_ASCENDING: 1.6%	orbitProp_DESCENDING: 1.7%
+
+
+---->2024-04-08 12:09:28<-----

@@ -1,0 +1,201 @@
+---
+title: "RNotebook"
+output: html_notebook
+---
+
+```{r}
+library(raster)
+library(terra)
+library(sp)
+library(openxlsx)
+#str(fullpath_df)
+#summary(fullpath_df)
+#colnames(fullpath_df)
+```
+
+```{r}
+#Looping through all thrętogether. Run the cell below first
+file_path <- "C:/Users/trygg/Documents/Master_project"
+#OLD
+# create a list of the 3 path_points
+# path_points <- list(
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_100.csv"),
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_500.csv"),
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_1000.csv")
+# )
+# # and for file_path_final
+# file_path_final <- list(
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_100.csv"),
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_500.csv"),
+#   file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_1000.csv")
+# )
+#ERA5
+path_points <- list(
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_era5_100.csv"),
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_era5_500.csv"),
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_era5_1000.csv")
+)
+# and for file_path_final
+file_path_final <- list(
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_era5_100.csv"),
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_era5_500.csv"),
+  file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_era5_1000.csv")
+)
+#create a for loop to loop through the 3 path_points and file_path_final and run the raster_to_point_function
+for (i in 1:3) {
+  fullpath_df <- read.csv(as.character(path_points[i]))
+  raster_to_point_function(fullpath_df, as.character(file_path_final[i]))
+}
+```
+
+```{r}
+
+raster_to_point_function <- function(fullpath_df, file_path_final) {
+  # Create empty lists to store extracted values
+  points_vv <- list()
+  points_vh <- list()
+  points_angle <- list()
+  points_mask <- list()
+  
+  # Loop through each row of the dataframe
+  for (i in 1:nrow(fullpath_df)) {
+    longitude <- c(fullpath_df[i, 'x_3006'])
+    latitude <- c(fullpath_df[i, 'y_3006'])
+    coords <- cbind(longitude, latitude)
+    sp_points <- SpatialPoints(coords, proj4string=CRS("+init=epsg:3006"))
+    #print(sp_points)
+    # Load VV raster data
+    rasterinn_vv <- fullpath_df[i, 'VV.tif']
+    raster_data_vv <- raster(rasterinn_vv)
+    point_vv <- extract(raster_data_vv, sp_points, ID = FALSE, method = "bilinear")
+    points_vv[[i]] <- point_vv
+    
+    # Load VH raster data
+    rasterinn_vh <- fullpath_df[i, 'VH.tif']
+    raster_data_vh <- raster(rasterinn_vh)
+    point_vh <- extract(raster_data_vh, sp_points, ID = FALSE, method = "bilinear")
+    points_vh[[i]] <- point_vh
+    
+    # Load angle raster data
+    rasterinn_angle <- fullpath_df[i, 'angle.tif']
+    raster_data_angle <- raster(rasterinn_angle)
+    point_angle <- extract(raster_data_angle, sp_points, ID = FALSE, method = "bilinear")
+    points_angle[[i]] <- point_angle
+    
+    # Load mask raster data
+    rasterinn_mask <- fullpath_df[i, 'mask.tif']
+    raster_data_mask <- raster(rasterinn_mask)
+    point_mask <- extract(raster_data_mask, sp_points, ID = FALSE, method = "bilinear")
+    points_mask[[i]] <- point_mask
+    }
+    # Convert lists to character vectors before appending to DataFrame
+  fullpath_df$point_VH <- sapply(points_vh, toString)
+  fullpath_df$point_VV <- sapply(points_vv, toString)
+  fullpath_df$points_angle <- sapply(points_angle, toString)
+  fullpath_df$points_mask <- sapply(points_mask, toString)
+    
+  write.csv(fullpath_df, file = file_path_final, row.names = TRUE)
+  
+  print('Skrifum lokið')
+  
+}
+```
+
+```{r}
+# Import clipped raster list
+#clear objects from workspace
+rm(list=ls())
+
+file_path <- "C:/Users/trygg/Documents/Master_project"
+#file_path <- "C:/Users/tryggvisi/Documents/my-awesome-masters-project"
+
+
+# path_points <- file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_100.csv")
+# file_path_final <- "C:/Users/tryggvisi/Documents/my-awesome-masters-project/Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_100.csv"
+
+# path_points <- file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_500.csv")
+# file_path_final <- "C:/Users/tryggvisi/Documents/my-awesome-masters-project/Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_500.csv"
+
+# path_points <- file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_1000.csv")
+# file_path_final <- "C:/Users/tryggvisi/Documents/my-awesome-masters-project/Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_1000.csv"
+
+#fyrir linear 1000
+# path_points <- file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_1000.csv")
+# file_path_final <- "C:/Users/tryggvisi/Documents/my-awesome-masters-project/Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/__NEW__values_to_points_R_1000_linear.csv"
+
+#ERA5 100
+path_points <- file.path(file_path, "Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/1_values_from_raster_python/values_to_point_clipGranule_fullpaths_era5_100.csv")
+file_path_final <- "C:/Users/trygg/Documents/Master_project/Data/Vindefjallen_data/Vindefjallen_cleaning/exploratory_data_analysis/2_values_from_raster_python_R/values_to_points_R_era5_100.csv"
+
+#convert to string
+path_points <- as.character(path_points)
+
+fullpath_df <- read.csv(path_points)
+
+```
+
+```{r}
+#extract the vv,vh,angle & mask values for each raster based on the sweref coords contained within the df
+#a new df is created, then NA values are removed, and finally exported as CSV
+
+
+# Create empty lists to store extracted values
+points_vv <- list()
+points_vh <- list()
+points_angle <- list()
+points_mask <- list()
+
+# Loop through each row of the dataframe
+for (i in 1:nrow(fullpath_df)) {
+  longitude <- c(fullpath_df[i, 'x_3006'])
+  latitude <- c(fullpath_df[i, 'y_3006'])
+  coords <- cbind(longitude, latitude)
+  sp_points <- SpatialPoints(coords, proj4string=CRS("+init=epsg:3006"))
+  #print(sp_points)
+  # Load VV raster data
+  rasterinn_vv <- fullpath_df[i, 'VV.tif']
+  raster_data_vv <- raster(rasterinn_vv)
+  point_vv <- extract(raster_data_vv, sp_points, ID = FALSE, method = "bilinear")
+  points_vv[[i]] <- point_vv
+  
+  # Load VH raster data
+  rasterinn_vh <- fullpath_df[i, 'VH.tif']
+  raster_data_vh <- raster(rasterinn_vh)
+  point_vh <- extract(raster_data_vh, sp_points, ID = FALSE, method = "bilinear")
+  points_vh[[i]] <- point_vh
+  
+  # Load angle raster data
+  rasterinn_angle <- fullpath_df[i, 'angle.tif']
+  raster_data_angle <- raster(rasterinn_angle)
+  point_angle <- extract(raster_data_angle, sp_points, ID = FALSE, method = "bilinear")
+  points_angle[[i]] <- point_angle
+  
+  # Load mask raster data
+  rasterinn_mask <- fullpath_df[i, 'mask.tif']
+  raster_data_mask <- raster(rasterinn_mask)
+  point_mask <- extract(raster_data_mask, sp_points, ID = FALSE, method = "bilinear")
+  points_mask[[i]] <- point_mask
+}
+# Convert lists to character vectors before appending to DataFrame
+fullpath_df$point_VH <- sapply(points_vh, toString)
+fullpath_df$point_VV <- sapply(points_vv, toString)
+fullpath_df$points_angle <- sapply(points_angle, toString)
+fullpath_df$points_mask <- sapply(points_mask, toString)
+```
+
+```{r}
+# 
+write.csv(fullpath_df, file = file_path_final, row.names = TRUE)
+if (file.exists(file_path_final)) {
+  cat(paste("Error: File", file_name, "already exists. Please choose a different file name.\n"))
+} else {
+  # Write the data to a CSV file
+  write.csv(fullpath_df, file = file_path_final, row.names = TRUE)
+  cat(paste("CSV file", file_name, "has been created successfully.\n"))
+}
+
+
+
+```
+
+

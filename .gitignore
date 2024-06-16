@@ -1,0 +1,15 @@
+# Ignore Data, Literature, Temp, and Testing folders
+Data/*
+!Data/Vindefjallen_data/
+!Data/GIS_data/
+!Data/ERA5_land/
+!Data/Landcover/
+!Data/Vindefjallen_data/outputs/
+!Data/Vindefjallen_data/Vindefjallen_cleaning/
+!Data/Vindefjallen_data/Vindefjallen_original/
+Testing/Snow_depth_backscatter/
+
+Lesefni - Shortcut.lnk/
+.Rproj.user
+Testing/
+GIS/
