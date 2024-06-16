@@ -1,0 +1,13 @@
+2017-02-21;2 gran, same path;
+2017-03-06;Asc and desc
+2017-03-17;Close to edge
+2018-03-15;Close to edge
+2018-03-23;2 gran, same path
+2018-03-30;2 gran, same path. Asc and desc
+2018-04-02;Close to edge
+2019-03-05;2 gran, same path
+2020-04-29;2 gran, same path
+2021-03-15;2 gran, same path
+2021-03-18;2 gran, same path
+2021-03-26;2 gran, same path
+2022-03-14;2 gran, same path

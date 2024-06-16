@@ -1,0 +1,244 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+# Load required libraries
+library(readxl)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+```
+
+
+```{r}
+pathPrep <- function(path = "clipboard") {
+    y <- if (path == "clipboard") {
+        readClipboard()
+    } else {
+        cat("Please enter the path:\n\n")
+        readline()
+    }
+    x <- chartr("\\", "/", y)
+    writeClipboard(x)
+    return(x)
+}
+
+```
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+```{r}
+#Til að lesa skrá frá SMHI þar sem fyrstu cells og B og C cells hafa verið fjarlægðir
+# Read CSV data
+file_path <- "C:/Users/trygg/Documents/Master_project/Data/SMHI/Weather_station_excel/smhi-opendata_8_40_178820_20230921_141656.csv"
+
+# Read the first row (header) of the CSV file
+header <- readLines(file_path, n = 1)
+
+# Split the header into individual items using semicolons as delimiters
+header_items <- unlist(strsplit(header, ";"))
+
+# Read the CSV file, skipping the first row (header)
+data <- read.csv(file_path, skip = 1, sep = ";")
+
+# Rename the columns based on the header items
+colnames(data) <- header_items
+
+new_data <- data[c("Datum", "Snödjup")]
+
+# Convert Snödjup to numeric
+new_data$Snödjup <- as.numeric(new_data$Snödjup)
+
+# Convert Datum to Date format
+new_data$Datum <- as.Date(new_data$Datum, format = "%Y-%m-%d")
+
+# Filter the dataframe to include only dates from 2014 to 2022
+filtered_data <- new_data %>%
+  filter(Datum >= as.Date("2014-01-01") & Datum <= as.Date("2022-12-31"))
+
+# Create a time series plot for the filtered data
+ggplot(data = filtered_data, aes(x = Datum, y = Snödjup)) +
+  geom_line() +
+  labs(x = "Date", y = "Snödjup", title = "Snödjup as a Function of Time (2014-2022)") +
+  theme_minimal()
+```
+
+---------------------------------------------------------------------------------------------------------------------------------
+SHMI
+```{r}
+# SMHI
+
+#Hérna er löguð csv skrá um Vuollerim tekin og náð í aðeins þau gögn sem eru eftirsótt, dags + dýpt fyrir gefið tímabil
+
+#Vuollerim
+#file_path_smhi <- "C:/Users/trygg/Documents/Master_project/Testing/SMHI_VS_ERA5/Data/SMHI/smhi-opendata_8_40_170870_Vuollerim.csv"
+
+#Ytterrissjö
+file_path_smhi <- "C:/Users/trygg/Documents/Master_project/Testing/SMHI_VS_ERA5/Data/SMHI/smhi-opendata_8_40_147020_Ytterrissjö.csv"
+
+# Read the first row (header) of the CSV file
+header_smhi <- readLines(file_path_smhi, n = 1)
+
+# Split the header into individual items using semicolons as delimiters
+header_items_smhi <- unlist(strsplit(header_smhi, ";"))
+
+# Read the CSV file, skipping the first row (header)
+data_smhi <- read.csv(file_path_smhi, skip = 1, sep = ";")
+
+# Rename the columns based on the header items
+colnames(data_smhi) <- header_items_smhi
+
+new_data_smhi <- data_smhi[c("Datum", "Snodjup")]
+
+# Convert Snodjup to numeric
+new_data_smhi$Snodjup <- as.numeric(new_data_smhi$Snodjup)
+
+# Convert Datum to Date format
+new_data_smhi$Datum <- as.Date(new_data_smhi$Datum, format = "%Y-%m-%d")
+
+# Filter the data for the desired date range
+smhi_filtered <- new_data_smhi %>%
+  filter(Datum >= as.Date("2021-01-01") & Datum <= as.Date("2021-04-30"))
+
+# Remove the first row (first observation)
+smhi_filtered <- smhi_filtered[-1, ]
+
+# Remove unnecessary objects
+rm(new_data_smhi)
+rm(data_smhi)
+
+#Fix fyrir Ytterissjö
+custom_values  <- c(0.48, 0.47, 0.46, 0.45)  # Adjust this to your actual values
+smhi_filtered$Snodjup[90:93] <- custom_values
+
+
+
+# Create a time series plot for the filtered data
+ggplot(data = smhi_filtered, aes(x = Datum, y = Snodjup)) +
+  geom_line() +
+  labs(x = "Date", y = "Snodjup", title = "Snodjup (SMHI)") +
+  theme_minimal()
+
+```
+
+---------------------------------------------------------------------------------------------------------------------------------
+ERA5
+```{r}
+#ERA5
+#Hérna er löguð excel skrá um ERA5 sem var útbúin í Python
+
+# ERA5 fyrir Vuollerim
+#file_path_era5 <- "C:/Users/trygg/Documents/Master_project/Testing/SMHI_VS_ERA5/Data/ERA5/ERA5_values2021Winter.csv"
+
+#ERA5 fyrir Ytterrissjö
+file_path_era5 <- "C:/Users/trygg/Documents/Master_project/Testing/SMHI_VS_ERA5/Data/ERA5/ERA5_values2021Winter_Ytterissjo.csv"
+
+# Read the first row (header) of the CSV file
+header_era5 <- readLines(file_path_era5, n = 1)
+
+# Split the header into individual items using commas as delimiters
+header_items_era5 <- unlist(strsplit(header_era5, ","))
+
+# Read the CSV file, skipping the first row (header)
+data_era5 <- read.csv(file_path_era5, skip = 1, sep = ",")
+
+# Rename the columns based on the header items
+colnames(data_era5) <- header_items_era5
+
+new_data_era5 <- data_era5[c("Datum", "Snodjup")]
+
+# Convert Snodjup to numeric
+new_data_era5$Snodjup <- as.numeric(new_data_era5$Snodjup)
+
+# Convert Datum to Date format
+new_data_era5$Datum <- as.Date(new_data_era5$Datum, format = "%Y-%m-%d")
+
+# Filter the data for the desired date range
+era5_filtered <- new_data_era5 %>%
+  filter(Datum >= as.Date("2021-01-01") & Datum <= as.Date("2021-04-30"))
+
+# Round the values in the "Snodjup" column to 2 significant figures
+era5_filtered$Snodjup <- round(era5_filtered$Snodjup, digits = 2)
+
+# Remove unnecessary objects
+rm(new_data_era5)
+rm(data_era5)
+
+# Create a time series plot for the filtered data
+ggplot(data = era5_filtered, aes(x = Datum, y = Snodjup)) +
+  geom_line() +
+  labs(x = "Date", y = "Snodjup", title = "Snodjup (SMHI)") +
+  theme_minimal()
+
+```
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Combine SMHI and ERA5
+
+```{r}
+# Assuming you have two dataframes: smhi_filtered and era5_filtered
+# Use left_join to combine them based on the "Datum" column
+combined_data <- left_join(smhi_filtered, era5_filtered, by = "Datum")
+
+# Rename the columns to reflect where the data came from
+combined_data <- combined_data %>%
+  rename(Snodjup_smhi = Snodjup.x, Snodjup_era5 = Snodjup.y)
+
+# Assuming you have a combined dataframe with columns "Datum", "Snodjup_smhi", and "Snodjup_era5"
+# Convert the data to long format
+combined_data_long <- combined_data %>%
+  pivot_longer(cols = c(Snodjup_smhi, Snodjup_era5),
+               names_to = "Source",
+               values_to = "Snodjup")
+```
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+Combine SMHI and ERA5
+
+```{r}
+#Test round values
+combined_data_long_rounded <- combined_data_long
+combined_data_long_rounded$Snodjup <- round(combined_data_long_rounded$Snodjup, digits = 2)
+
+# Create a ggplot object to plot the data
+ggplot(data = combined_data_long, aes(x = Datum, y = Snodjup, color = Source)) +
+  geom_line() +
+  labs(x = "Datum", y = "Snodjup", color = "Source") +
+  theme_minimal()
+
+```
+
+```{r}
+combined_data
+# Filter the data for the desired date range
+combined_data_timefiltered <- combined_data %>%
+  filter(Datum >= as.Date("2021-01-01") & Datum <= as.Date("2021-03-30"))
+
+# Perform Pearson correlation test
+correlation <- cor(combined_data_timefiltered$Snodjup_smhi, combined_data_timefiltered$Snodjup_era5, method = "pearson")
+
+# Print the correlation coefficient
+print(paste("Pearson Correlation Coefficient:", correlation))
+```
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+```{r}
+# Perform Pearson correlation test
+correlation <- cor(combined_data$Snodjup_smhi, combined_data$Snodjup_era5, method = "pearson")
+
+# Print the correlation coefficient
+print(paste("Pearson Correlation Coefficient:", correlation))
+
+```
+

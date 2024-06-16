@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><messages><msg code="0" type="2">Start Time: 16 November 2023 15:37:08</msg><msg code="539" type="100">ERROR 000539: Traceback (most recent call last):
+  File "&lt;expression&gt;", line 1, in &lt;module&gt;
+  File "&lt;string&gt;", line 3, in SequentialNumber
+UnboundLocalError: local variable 'rec' referenced before assignment
+</msg><msg code="-2147467259" type="100">Failed to execute (CalculateField).</msg><msg code="0" type="3">Failed at 16 November 2023 15:37:08 (Elapsed Time: 0.08 seconds)</msg></messages>

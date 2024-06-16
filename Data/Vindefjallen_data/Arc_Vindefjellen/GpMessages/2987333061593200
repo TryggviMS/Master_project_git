@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><messages><msg code="0" type="2">Start Time: 22 February 2024 15:17:26</msg><msg code="0" type="0">Con(Raster(r"S1A__IW___D_20170304T052931_VV_gamma0-rtc_db.tif") != 0, Con((Raster(r"S1A__IW___D_20170304T052931_VH_gamma0-rtc_db.tif") / Raster(r"S1A__IW___D_20170304T052931_VV_gamma0-rtc_db.tif")) &gt; 3, 3, Con((Raster(r"S1A__IW___D_20170304T052931_VH_gamma0-rtc_db.tif") / Raster(r"S1A__IW___D_20170304T052931_VV_gamma0-rtc_db.tif")) &lt; 1, 1 (Raster(r"S1A__IW___D_20170304T052931_VH_gamma0-rtc_db.tif") / Raster(r"S1A__IW___D_20170304T052931_VV_gamma0-rtc_db.tif")))), 0)</msg><msg code="539" type="100">ERROR 000539: Traceback (most recent call last):
+  File "&lt;expression&gt;", line 1, in &lt;module&gt;
+  File "&lt;string&gt;", line 5, in rcexec_DC684390_0C54_4F14_9EBF_B34DF3F2E1B1
+TypeError: 'int' object is not callable
+</msg><msg code="-2147467259" type="100">Failed to execute (RasterCalculator).</msg><msg code="0" type="3">Failed at 22 February 2024 15:17:26 (Elapsed Time: 0.35 seconds)</msg></messages>

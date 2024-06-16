@@ -1,0 +1,316 @@
+---->2024-04-08 17:10:58<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 41)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 41)
+Descending: (228, 41)
+Ascending: (200, 41)
+Model dataset shape: (428, 8)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'TPI_100', 'TRI_100',
+       'time_difference_rnd', 'land_cover_code'],
+      dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 28.17
+Mean Squared Error: 1345.28
+Root Mean Squared Error: 36.68
+MAPE: 0.34
+R2: 0.43
+
+Best params: {'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 20}
+Feature importance:
+ - VH: 15.1% - VV: 14.77% - VH/VV: 12.44% - angle: 13.81% - TPI_100: 13.04% - TRI_100: 15.18% - time_difference_rnd: 12.32% - land_cover_code: 3.35%
+
+
+---->2024-04-08 20:36:12<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 41)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 41)
+Descending: (228, 41)
+Ascending: (200, 41)
+Model dataset shape: (428, 8)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'TPI_100', 'TRI_100',
+       'time_difference_rnd', 'land_cover_code'],
+      dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 26.08
+Mean Squared Error: 1187.12
+Root Mean Squared Error: 34.45
+MAPE: 0.31
+R2: 0.5
+
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'max_depth': 110, 'bootstrap': True}
+Feature importance:
+ - VH: 14.55% - VV: 15.45% - VH/VV: 11.98% - angle: 12.72% - TPI_100: 13.37% - TRI_100: 17.51% - time_difference_rnd: 11.63% - land_cover_code: 2.8%
+
+
+---->2024-04-08 20:51:03<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 41)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 41)
+Descending: (228, 41)
+Ascending: (200, 41)
+Model dataset shape: (428, 11)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd', 'land_cover_code',
+       'ELEV_100', 'ASP_100', 'SLOP_100', 'TPI_100', 'TRI_100'],
+      dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 13.92
+Mean Squared Error: 344.77
+Root Mean Squared Error: 18.57
+MAPE: 0.16
+R2: 0.85
+
+Best params: {'n_estimators': 1400, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 60, 'bootstrap': False}
+Feature importance:
+ - VH: 12.33% - VV: 12.03% - VH/VV: 8.69% - angle: 8.81% - time_difference_rnd: 8.8% - land_cover_code: 1.55% - ELEV_100: 11.35% - ASP_100: 10.37% - SLOP_100: 8.74% - TPI_100: 8.16% - TRI_100: 9.17%
+
+
+---->2024-04-08 21:01:53<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 41)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 41)
+Descending: (228, 41)
+Ascending: (200, 41)
+Model dataset shape: (428, 6)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd', 'land_cover_code'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 16.07
+Mean Squared Error: 456.32
+Root Mean Squared Error: 21.36
+MAPE: 0.19
+R2: 0.81
+
+Best params: {'n_estimators': 1400, 'min_samples_split': 10, 'min_samples_leaf': 1, 'max_features': 'sqrt', 'max_depth': 60, 'bootstrap': False}
+Feature importance:
+ - VH: 23.38% - VV: 21.04% - VH/VV: 16.93% - angle: 18.91% - time_difference_rnd: 14.8% - land_cover_code: 4.95%
+
+
+---->2024-04-09 12:09:20<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 43)
+Descending: (228, 43)
+Ascending: (200, 43)
+Model dataset shape: (428, 6)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd', 'VEGTYP'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 28.57
+Mean Squared Error: 1395.18
+Root Mean Squared Error: 37.35
+MAPE: 0.35
+R2: 0.41
+
+Best params: {'n_estimators': 900, 'min_samples_split': 11, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 30}
+Feature importance:
+ - VH: 20.29% - VV: 19.76% - VH/VV: 17.26% - angle: 17.96% - time_difference_rnd: 15.05% - VEGTYP: 9.67%
+
+
+---->2024-04-09 13:31:19<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 43)
+Descending: (228, 43)
+Ascending: (200, 43)
+Model dataset shape: (428, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth
+
+Mean Absolute Error: 28.61
+Mean Squared Error: 1392.26
+Root Mean Squared Error: 37.31
+MAPE: 0.43
+R2: 0.4
+
+Best params: {'n_estimators': 1600, 'min_samples_split': 12, 'min_samples_leaf': 4, 'max_features': 'sqrt', 'max_depth': 90}
+Feature importance:
+ - VH: 36.08% - VV: 32.85% - VH/VV: 31.06%
+
+
+---->2024-04-09 13:40:37<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: values_to_points_R_era5_100.csv
+Main dataset (rows,columns): (428, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (428, 43)
+Descending: (228, 43)
+Ascending: (200, 43)
+Model dataset shape: (428, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 29.07
+Mean Squared Error: 1425.88
+Root Mean Squared Error: 37.76
+MAPE: 0.35
+R2: 0.4
+
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 10}
+Feature importance:
+ - VH: 35.93% - VV: 33.53% - VH/VV: 30.54%
+
+
+---->2024-04-09 14:07:14<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: none
+Main dataset (rows,columns): (272, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (272, 43)
+Descending: (161, 43)
+Ascending: (111, 43)
+Model dataset shape: (272, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 30.62
+Mean Squared Error: 1536.86
+Root Mean Squared Error: 39.2
+MAPE: 0.38
+R2: 0.42
+
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 10}
+Feature importance:
+ - VH: 35.44% - VV: 32.2% - VH/VV: 32.36%
+
+
+---->2024-04-09 14:20:07<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: none
+Main dataset (rows,columns): (272, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (272, 43)
+Descending: (161, 43)
+Ascending: (111, 43)
+Model dataset shape: (272, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 28.11
+Mean Squared Error: 1307.0
+Root Mean Squared Error: 36.15
+MAPE: 0.35
+R2: 0.51
+
+Best params: {'n_estimators': 200, 'min_samples_split': 10, 'min_samples_leaf': 2, 'max_features': 1, 'max_depth': 80}
+Feature importance:
+ - VH: 35.98% - VV: 32.5% - VH/VV: 31.53%
+
+
+---->2024-04-09 14:44:49<-----
+
+CSV file1: values_to_points_R_100.csv
+CSV file2: none
+Main dataset (rows,columns): (272, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (272, 43)
+Descending: (161, 43)
+Ascending: (111, 43)
+Model dataset shape: (272, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 23.24
+Mean Squared Error: 916.96
+Root Mean Squared Error: 30.28
+MAPE: 0.29
+R2: 0.65
+
+Best params: {'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 70}
+Feature importance:
+ - VH: 34.75% - VV: 32.91% - VH/VV: 32.34%
+
+
+---->2024-04-09 17:13:12<-----
+
+CSV file1: values_to_points_R_1000.csv
+CSV file2: values_to_points_R_era5_1000.csv
+Main dataset (rows,columns): (441, 43)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (441, 43)
+Descending: (234, 43)
+Ascending: (207, 43)
+Model dataset shape: (441, 3)
+X Columns: Index(['VH', 'VV', 'VH/VV'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 23.64
+Mean Squared Error: 949.05
+Root Mean Squared Error: 30.81
+MAPE: 0.29
+R2: 0.61
+
+Best params: {'n_estimators': 200, 'min_samples_split': 2, 'min_samples_leaf': 2, 'max_features': 'sqrt', 'max_depth': 70}
+Feature importance:
+ - VH: 32.84% - VV: 34.43% - VH/VV: 32.73%
+
+
+---->2024-04-10 11:39:12<-----
+
+CSV file1: values_to_points_R_1000.csv
+CSV file2: values_to_points_R_era5_1000.csv
+Main dataset (rows,columns): (441, 40)
+Cleaning parameters: T = skip, std = 2
+Cleaned dataset: (441, 40)
+Descending: (234, 40)
+Ascending: (207, 40)
+Model dataset shape: (441, 5)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 28.3
+Mean Squared Error: 1362.27
+Root Mean Squared Error: 36.91
+MAPE: 0.35
+R2: 0.438
+
+Best params: {'n_estimators': 200, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': 1, 'max_depth': 80}
+Feature importance:
+ - VH: 21.99% - VV: 21.64% - VH/VV: 19.65% - angle: 20.48% - time_difference_rnd: 16.24%
+
+
+---->2024-04-18 15:55:21<-----
+
+CSV file1: values_to_points_R_1000.csv
+CSV file2: values_to_points_R_era5_1000.csv
+Main dataset (rows,columns): (504, 40)
+Cleaning parameters: T = skip, std = 1000
+Cleaned dataset: (504, 40)
+Descending: (265, 40)
+Ascending: (239, 40)
+Model dataset shape: (504, 6)
+X Columns: Index(['VH', 'VV', 'VH/VV', 'angle', 'time_difference_rnd', 'VEGTYP'], dtype='object')
+Y model name: snow_depth_bins
+
+Mean Absolute Error: 22.78
+Mean Squared Error: 864.96
+Root Mean Squared Error: 29.41
+MAPE: 0.28
+R2: 0.651
+
+Best params: {'n_estimators': 1400, 'min_samples_split': 5, 'min_samples_leaf': 2, 'max_features': 1, 'max_depth': 80}
+Feature importance:
+ - VH: 18.76% - VV: 19.01% - VH/VV: 17.19% - angle: 17.58% - time_difference_rnd: 13.83% - VEGTYP: 13.64%

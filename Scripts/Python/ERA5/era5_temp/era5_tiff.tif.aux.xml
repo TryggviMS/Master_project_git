@@ -1,0 +1,62 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>2 metre temperature</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>263.6984320746528</HistMin>
+        <HistMax>268.1116265190972</HistMax>
+        <BucketCount>81</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|0|0|0|0|0|0|1|0|1|0|0|0|0|0|1|1|0|1|1|0|1|2|2|1|0|1|2|1|0|2|1|1|3|5|2|1|4|1|1|1|5|4|1|5|2|1|3|3|2|1|1|2|0|1|0|1|2|0|0|0|1|1|1|1|1|0|0|0|0|0|0|0|1|0|0|1|0|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">268.08471679688</MDI>
+      <MDI key="STATISTICS_MEAN">265.94230746046</MDI>
+      <MDI key="STATISTICS_MINIMUM">263.72534179688</MDI>
+      <MDI key="STATISTICS_STDDEV">0.81373855061789</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="2">
+    <Description>Snow density</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>177.5718404510875</HistMin>
+        <HistMax>245.2250040313344</HistMax>
+        <BucketCount>81</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|0|1|1|0|1|0|1|0|0|2|1|1|1|0|0|2|0|1|3|1|2|3|0|1|0|1|4|4|2|4|2|1|0|3|0|2|2|1|0|1|1|2|0|0|2|1|1|0|0|1|1|0|0|0|1|2|0|3|3|1|2|1|0|1|1|1|0|2|0|0|0|1|0|0|0|0|1|0|1|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">244.81248474121</MDI>
+      <MDI key="STATISTICS_MEAN">208.79830650047</MDI>
+      <MDI key="STATISTICS_MINIMUM">177.98435974121</MDI>
+      <MDI key="STATISTICS_STDDEV">16.523865370883</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+  <PAMRasterBand band="3">
+    <Description>Snow depth</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>0.07349164397628219</HistMin>
+        <HistMax>0.2362169512995967</HistMax>
+        <BucketCount>81</BucketCount>
+        <IncludeOutOfRange>0</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>1|2|0|2|2|2|1|2|4|3|1|2|1|1|0|2|4|5|2|1|1|2|1|3|0|5|1|2|1|1|0|1|0|3|2|1|1|2|1|2|1|1|1|0|2|0|0|0|1|1|0|1|0|1|2|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">0.23522472381592</MDI>
+      <MDI key="STATISTICS_MEAN">0.12242830535512</MDI>
+      <MDI key="STATISTICS_MINIMUM">0.074483871459961</MDI>
+      <MDI key="STATISTICS_STDDEV">0.032203712787353</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">100</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

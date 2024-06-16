@@ -1,0 +1,187 @@
+---
+title: "Untitled"
+author: "T-man"
+date: "2023-11-17"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Install and load the openxlsx package
+# install.packages("openxlsx")
+library(openxlsx)
+library(tidyverse)
+```
+
+```{r}
+
+
+# Specify the file path
+file_path <- "C:/Users/trygg/Documents/Master_project/Data/Vindefjallen_data/Snowdepth_data.xlsx"
+
+# Read the Excel file
+my_data <- read.xlsx(file_path)
+
+# Display the first few rows of the data
+columns_to_keep <- c("ID","Triangle", "CensusDate", "CensusYear", "SnowDepth_cornerA_cm", "SnowDepth_cornerB_cm", "SnowDepth_cornerC_cm", "Temperature_degreeCelsius")
+
+# Subset the dataframe to keep only the selected columns
+my_data_trim <- my_data[, columns_to_keep]
+
+# Assuming my_data_trim is your data frame
+# Replace "CensusDate" with the actual column name
+
+# Convert the entire column to Date format
+my_data_trim$CensusDate <- as.Date(my_data_trim$CensusDate, origin = "1899-12-30")
+
+# Print the first few rows of the updated data frame
+head(my_data_trim)
+
+
+```
+
+```{r}
+# Assuming "Triangle" is the column name in my_data_trim
+unique_triangles <- unique(my_data_trim$Triangle)
+num_unique_triangles <- length(unique_triangles)
+
+# Print the count of unique entries
+cat("Number of unique entries in the 'Triangle' column:", num_unique_triangles, "\n")
+
+```
+```{r}
+#Counting how often each date appears in the table
+# and CensusDate is the column you are interested in
+
+# Use table() to count the occurrences of each unique value
+census_date_counts <- table(my_data_trim$CensusDate)
+
+# Convert the result to a data frame for better readability
+census_date_counts_df <- as.data.frame(census_date_counts)
+
+# Order the data frame by frequency in descending order
+census_date_counts_df <- census_date_counts_df[order(-census_date_counts_df$Freq), ]
+
+
+# Print or view the result
+print(census_date_counts_df)
+
+```
+```{r}
+#Counting how often each triangle has been measured
+
+# Assuming my_data_trim is your dataframe
+# and Triangle is the column you are interested in
+
+# Use table() to count the occurrences of each unique value
+triangle_counts <- table(my_data_trim$Triangle)
+
+# Convert the result to a data frame for better readability
+triangle_counts_df <- as.data.frame(triangle_counts)
+triangle_counts_df <- triangle_counts_df[order(-triangle_counts_df$Freq), ]
+
+# Print or view the result
+print(triangle_counts_df)
+
+```
+```{r}
+write.xlsx(census_date_counts_df, "temp\\census_dates.xlsx", rowNames = FALSE)
+
+
+```
+
+
+```{r}
+#data processing for adding x and y coords to each measurement 
+
+
+# Specify the file path to your Excel file
+excel_file_path <- "C:\\Users\\trygg\\Documents\\Master_project\\Testing\\Vindefjallen_testing\\data\\Snowdepth_data - Copy.xlsx"
+
+# Specify the sheet name or index (e.g., "Sheet1" or 1)
+sheet_name <- "Census_data_granune_matching"
+
+# Read the specific sheet into a data frame
+census_data <- read_excel(excel_file_path, sheet = sheet_name)
+
+# Print the first few rows of the data frame
+print(head(census_data))
+
+sheet_name <- "triangle_infos_altered"
+
+triangle_data = read_excel(excel_file_path, sheet = sheet_name)
+
+print(head(triangle_data))
+
+
+```
+
+```{r}
+#Create a new column which combines Triangle and Corner
+census_data
+
+census_data <- census_data %>%
+  mutate(TriangleCorner = paste(Triangle, Corner, sep = ""))
+
+# Assuming triangle_data is your data frame
+# You can create a new column named "Merged_Column" by concatenating "Triangle" and "Corner"
+triangle_data <- triangle_data %>%
+  mutate(TriangleCorner = paste(Triangle, Corner, sep = ""))
+
+# Print the updated data frame
+print(triangle_data)
+
+```
+
+```{r}
+merged_data <- left_join(census_data, triangle_data, by = "TriangleCorner")
+
+columns_to_keep <- c("ID","Triangle.x", "Corner.x", "CensusDate", "SnowDepth", "TriangleCorner", "xcoord_EPSG_3006", "ycoord_EPSG_3006")
+
+# Subset the dataframe to keep only the selected columns
+merged_data_trim <- merged_data[, columns_to_keep]
+print(head(merged_data_trim))
+```
+
+```{r}
+#convert coords
+# Install and load the sf package
+install.packages("sf")
+library(sf)
+
+# Assuming merged_data_trim is your data frame
+# Assuming xcoord_EPSG_3006 and ycoord_EPSG_3006 are your coordinate columns
+
+# Create an sf object with EPSG:3006 coordinates
+sf_data_3006 <- st_as_sf(merged_data_trim, coords = c("xcoord_EPSG_3006", "ycoord_EPSG_3006"), crs = 3006)
+
+# Transform the coordinates to EPSG:4326
+sf_data_4326 <- st_transform(sf_data_3006, crs = 4326)
+
+# Add the transformed coordinates back to the original data frame
+merged_data_trim$xcoord_EPSG_4326 <- st_coordinates(sf_data_4326)[, 1]
+merged_data_trim$ycoord_EPSG_4326 <- st_coordinates(sf_data_4326)[, 2]
+
+# Optionally, drop the original EPSG:3006 coordinates
+merged_data_trim <- merged_data_trim[, !(names(merged_data_trim) %in% c("xcoord_EPSG_3006", "ycoord_EPSG_3006"))]
+
+# Print the updated data frame
+print(merged_data_trim)
+
+
+
+```
+
+
+```{r}
+#export to excel
+# Assuming merged_data_trim is your data frame
+merged_data_trim$CensusDate <- as.character(merged_data_trim$CensusDate)
+
+# Specify the file path for the CSV file
+output_path <- "C:/Users/trygg/Documents/Master_project/Testing/Vindefjallen_testing/data/vindefjallen_corner_coords.csv"
+
+# Export the data frame to a CSV file
+write.csv(merged_data_trim, file = output_path, row.names = FALSE)
+```
+

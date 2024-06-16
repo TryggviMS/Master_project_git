@@ -1,0 +1,138 @@
+
+```{r}
+#https://www.r-bloggers.com/2024/01/extract-raster-values-to-points-with-bilinear-interpolation/
+#install.packages('terra')
+library(terra)
+```
+```{r}
+
+# create a simple raster map:
+r <- rast(nrows = 3, ncols = 3, xmin = 0, xmax = 3, ymin = 0, ymax = 3)
+values(r) <- 1:ncell(r)
+plot(r)
+
+# get the pixel centroids:
+centr <- as.points(r)
+plot(centr, add = TRUE)
+
+# show pixel values on the map:
+plot(r, main = "Pixel values")
+text(centr, values(r))
+
+# get the middle pixel centroid:
+pnt <- centr[5, ]
+plot(pnt, col = "blue", pch = 4, cex = 2, add = TRUE)
+
+extract(r, pnt, ID = FALSE, method = "simple")
+extract(r, pnt, ID = FALSE, method = "bilinear")
+```
+```{r}
+checkPoint <- function(dx = 0, dy = 0, col = "black") {
+  pnt_shift <- shift(pnt, dx = dx, dy = dy)
+  plot(pnt_shift, col = col, add = TRUE)
+  val <- extract(r, pnt_shift, ID = FALSE, method = "bilinear")
+  text(pnt_shift, val, pos = 3, col = col, cex = 0.8, halo = TRUE)
+}
+# both 5
+```
+
+```{r}
+plot(r)
+text(centr, values(r))
+
+checkPoint(dx = 0.48, dy = -0.35, col = "blue")
+# checkPoint(dx = 0.5, col = "purple")
+# checkPoint(dx = 0.8, dy = 0.2, col = "steelblue")
+# checkPoint(dx = 0.5, dy = -0.5, col = "magenta")
+# checkPoint(dx = -0.3, dy = 0.3, col = "darkgreen")
+# checkPoint(dx = -1.3, dy = 0, col = "darkturquoise")
+# checkPoint(dx = -1.3, dy = 0.3, col = "red3")
+# checkPoint(dx = -1.3, dy = 1.2, col = "cadetblue")
+```
+
+```{r}
+#Proof of concept fyrir bilnear interpolation, i.e. formula version
+
+bilinear_interpolation <- function(x, y, x1, y1, x2, y2, q11, q21, q12, q22) {
+  # Calculate weights
+  w1 <- (x2 - x) * (y2 - y) / ((x2 - x1) * (y2 - y1))
+  cat("Value 1:", w1, "\n")
+  w2 <- (x - x1) * (y2 - y) / ((x2 - x1) * (y2 - y1))
+  cat("Value 2:", w2, "\n")
+  w3 <- (x2 - x) * (y - y1) / ((x2 - x1) * (y2 - y1))
+  cat("Value 3:", w3, "\n")
+  w4 <- (x - x1) * (y - y1) / ((x2 - x1) * (y2 - y1))
+  cat("Value 4:", w4, "\n")
+  # Perform bilinear interpolation
+  interpolated_value <- w1 * q11 + w2 * q21 + w3 * q12 + w4 * q22
+  
+  return(interpolated_value)
+}
+
+# Example usage
+x <- 1.7
+y <- 1.8
+x1 <- 1.5
+x2 <- 2.5
+y1 <- 1.5
+y2 <- 2.5
+q11 <- 5
+q21 <- 6
+q12 <- 2
+q22 <- 3
+
+interpolated_value <- bilinear_interpolation(x, y, x1, y1, x2, y2, q11, q21, q12, q22)
+print(interpolated_value, q22)
+
+
+```
+```{r}
+# create a simple raster map:
+r <- rast(nrows = 2, ncols = 2, xmin = -.5, xmax = 1.5, ymin = -0.5, ymax = 1.5)
+values(r) <- 1:ncell(r)
+plot(r)
+
+# get the pixel centroids:
+centr <- as.points(r)
+plot(centr, add = TRUE)
+# show pixel values on the map:
+plot(r, main = "Pixel values")
+text(centr, values(r))
+
+# get the middle pixel centroid:
+pnt <- centr[1, ]
+plot(pnt, col = "blue", pch = 4, cex = 2, add = TRUE)
+```
+
+
+```{r}
+checkPoint <- function(dx = 0, dy = 0, col = "black") {
+  pnt_shift <- shift(pnt, dx = dx, dy = dy)
+  plot(pnt_shift, col = col, add = TRUE)
+  val <- extract(r, pnt_shift, ID = FALSE, method = "bilinear")
+  text(pnt_shift, val, pos = 3, col = col, cex = 0.8, halo = TRUE)
+}
+```
+
+```{r}
+r <- rast(nrows = 2, ncols = 2, xmin = -.5, xmax = 1.5, ymin = -0.5, ymax = 1.5)
+values(r) <- c(16, 16, 14, 14)
+
+plot(r)
+plot(r, main = "Pixel values")
+
+text(centr, values(r))
+#grid(nx = 2, ny = 2, col = 'black')
+
+
+```
+
+```{r}
+plot(r)
+text(centr, values(r))
+#grid(nx = 2, ny = 2, col = 'black')
+
+checkPoint(dx = .85, dy = -.55, col = "blue")
+```
+```
+

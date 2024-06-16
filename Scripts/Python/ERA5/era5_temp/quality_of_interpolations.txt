@@ -1,0 +1,230 @@
+2021-04-12
+mean 92
+std 33
+max 185
+min 35
+mean era5 75
+mean meas 106
+count: 18
+quality?: bad
+----------------------------------------
+2020-04-29
+mean 115
+std 41
+max 210
+min 50
+mean era5 95
+mean meas 131
+count: 17
+quality?: bad
+----------------------------------------
+2022-03-14
+mean 110
+std 39
+max 195
+min 50
+mean era5 89
+mean meas 130
+count: 15
+quality?: bad
+----------------------------------------
+2017-03-17
+mean 107
+std 41
+max 215
+min 35
+mean era5 97
+mean meas 117
+count: 15
+quality?: good
+----------------------------------------
+2019-03-26
+mean 85
+std 38
+max 250
+min 30
+mean era5 85
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2018-03-28
+mean 134
+std 50
+max 250
+min 30
+mean era5 85
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2023-03-07
+mean 47
+std 36
+max 160
+min 2
+mean era5 85
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2022-03-13
+mean 99
+std 34
+max 230
+min 60
+mean era5 89
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2023-03-25
+mean 47
+std 33
+max 145
+min 5
+mean era5 24
+mean meas 85
+count: 12
+quality?: 
+----------------------------------------
+2020-04-28
+mean 117
+std 38
+max 200
+min 68
+mean era5 98
+mean meas 85
+count: 12
+quality?: good
+----------------------------------------
+2023-03-06
+mean 36
+std 25
+max 85
+min 1
+mean era5 21
+mean meas 85
+count: 12
+quality?: okay
+----------------------------------------
+2018-03-15
+mean 102
+std 31
+max 133
+min 10
+mean era5 115
+mean meas 85
+count: 12
+quality?: okay
+----------------------------------------
+2017-04-18
+mean 91
+std 37
+max 200
+min 30
+mean era5 97
+mean meas 85
+count: 12
+quality?: okay
+----------------------------------------
+2019-03-11
+mean 87
+std 41
+max 210
+min 30
+mean era5 80
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2021-03-28
+mean 67
+std 18
+max 110
+min 30
+mean era5 63
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2021-04-17
+mean 75
+std 26
+max 170
+min 45
+mean era5 65
+mean meas 85
+count: 12
+quality?: okay
+----------------------------------------
+2022-03-12
+mean 94
+std 27
+max 165
+min 45
+mean era5 91
+mean meas 85
+count: 12
+quality?: bad
+---------------------------------------
+2020-04-05
+mean 120
+std 26
+max 160
+min 55
+mean era5 116
+mean meas 85
+count: 12
+quality?: bad
+----------------------------------------
+2020-03-19
+mean 122
+std 33
+max 220
+min 86
+mean era5 110
+mean meas 131
+count: 17
+quality?: bad
+----------------------------------------
+2023-04-13
+mean 32
+std 41
+max 150
+min 1
+mean era5 12
+mean meas 131
+count: 17
+quality?: good
+----------------------------------------
+2017-04-16
+mean 79
+std 31
+max 128
+min 15
+mean era5 89
+mean meas 131
+count: 17
+quality?: 
+----------------------------------------
+2023-03-27
+mean 32
+std 33
+max 130
+min 0
+mean era5 17
+mean meas 131
+count: 17
+quality?: bad
+----------------------------------------
+2018-03-31
+mean 118
+std 21
+max 137
+min 40
+mean era5 127
+mean meas 131
+count: 17
+quality?: good
+----------------------------------------

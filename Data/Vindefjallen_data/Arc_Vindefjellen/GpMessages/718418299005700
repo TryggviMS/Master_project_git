@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?><messages><msg code="0" type="2">Start Time: sunnudagur, 21. janúar 2024 17:53:18</msg><msg code="539" type="100">ERROR 000539:   File "&lt;expression&gt;", line 1
+    u"AC-22A"[]
+              ^
+SyntaxError: unexpected EOF while parsing
+</msg><msg code="-2147467259" type="100">Failed to execute (CalculateField).</msg><msg code="0" type="3">Failed at sunnudagur, 21. janúar 2024 17:53:18 (Elapsed Time: 0,16 seconds)</msg></messages>

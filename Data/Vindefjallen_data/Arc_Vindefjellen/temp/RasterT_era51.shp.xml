@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="is"><Esri><CreaDate>20240314</CreaDate><CreaTime>00144900</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files\arcgis\pro\Resources\ArcToolbox\toolboxes\Conversion Tools.tbx\RasterToPoint" Date="20240314" Time="001449">RasterToPoint era5.tif C:\Users\trygg\Documents\Master_project\Data\Vindefjallen_data\Arc_Vindefjellen\temp\RasterT_era51.shp Value</Process></lineage></DataProperties></Esri></metadata>
